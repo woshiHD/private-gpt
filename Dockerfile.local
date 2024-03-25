@@ -29,8 +29,8 @@ RUN poetry install --extras "ui embeddings-huggingface llms-llama-cpp vector-sto
 FROM base as app
 
 ENV PYTHONUNBUFFERED=1
-ENV PORT=8080
-EXPOSE 8080
+ENV PORT=8081
+EXPOSE 8081
 
 # Prepare a non-root user
 RUN adduser --system worker
