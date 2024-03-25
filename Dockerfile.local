@@ -43,7 +43,7 @@ COPY --chown=worker private_gpt/ private_gpt
 COPY --chown=worker fern/ fern
 COPY --chown=worker *.yaml *.md ./
 COPY --chown=worker scripts/ scripts
-COPY --chown=worker /home/worker/app/cache/ cache
+COPY --chown=worker cache/ cache
 
 ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 
