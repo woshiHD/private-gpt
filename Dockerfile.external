@@ -30,14 +30,14 @@ RUN mkdir local_data; chown worker:nogroup local_data
 RUN mkdir models; chown worker:nogroup models; chgrp nogroup models
 RUN mkdir cache; chown worker:nogroup cache; chgrp nogroup cache
 
-RUN chmod -R 775 .
-RUN chgrp -R 0 / && \
-    chmod -R g=u /
-
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
 COPY --chown=worker private_gpt/ private_gpt
 COPY --chown=worker fern/ fern
 COPY --chown=worker *.yaml *.md ./
+
+RUN chmod -R 775 .
+RUN chgrp -R 0 /home && \
+    chmod -R g=u /home
 
 ENV PYTHONPATH="$PYTHONPATH:/private_gpt/"
 
