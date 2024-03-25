@@ -31,6 +31,8 @@ RUN mkdir models; chown worker:nogroup models; chgrp nogroup models
 RUN mkdir cache; chown worker:nogroup cache; chgrp nogroup cache
 
 RUN chmod -R 775 .
+RUN chgrp -R 0 / && \
+    chmod -R g=u /
 
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
 COPY --chown=worker private_gpt/ private_gpt
