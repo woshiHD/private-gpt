@@ -15,6 +15,7 @@ WORKDIR /home/worker/app
 COPY pyproject.toml poetry.lock ./
 
 RUN poetry install --extras "ui vector-stores-qdrant llms-llama-cpp"
+RUN pip wheel --no-cache-dir --use-pep517 "llama-cpp-python (==0.2.53)"
 
 FROM base as app
 
