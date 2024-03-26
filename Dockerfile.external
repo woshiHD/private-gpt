@@ -1,10 +1,6 @@
 FROM python:3.11.6-slim-bullseye as base
 
 # Install poetry
-RUN apk update && apk add python3-dev \
-                          gcc \
-                          libc-dev \
-                          libffi-dev
 RUN pip install pipx
 RUN python3 -m pipx ensurepath
 RUN pipx install poetry
