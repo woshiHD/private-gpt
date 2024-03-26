@@ -16,7 +16,7 @@ WORKDIR /home/worker/app
 COPY pyproject.toml poetry.lock ./
 
 # RUN pip wheel --no-cache-dir --use-pep517 "llama-cpp-python"
-RUN poetry install --extras "ui vector-stores-qdrant llms-llama-cpp llms-ollamaembeddings-huggingface"
+RUN poetry install --extras "ui llms-llama-cpp embeddings-huggingface vector-stores-qdrant"
 RUN poetry run python scripts/setup
 RUN export PGPT_PROFILES=local make run
 
